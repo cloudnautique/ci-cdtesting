@@ -1,37 +1,29 @@
 ---
-pipeline:
-  build:
-    privileged: true
-    image: rancher/dapper:1.11.2
-    volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
-    commands:
-    - dapper ci
+kind: pipeline
+name: amd
 
-  stage-binaries:
-    image: rancher/dapper:1.11.2
-    commands:
-    - cp -r ./bin/* ./package/
-    when:
-      branch: master
-      event: tag
+platform:
+  os: linux
+  arch: amd64
 
- 
-  github_binary_release:
-    image: plugins/github-release
-    files: bin/*
-    secrets: [github_token]
-    when:
-      branch: master
-      event: tag
+steps:
+- name: build
+  image: golang
+  commands:
+  - go build
+  - go test
 
-  publish:
-    image: plugins/docker
-    dockerfile: package/Dockerfile
-    repo: cloudnautique/ci-cdtesting
-    context: package/
-    tag: ${DRONE_TAG}
-    secrets: [docker_username, docker_password]
-    when:
-      branch: master
-      event: tag
+---
+kind: pipeline
+name: arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+- name: build
+  image: golang
+  commands:
+  - go build
+  - go test
