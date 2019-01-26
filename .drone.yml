@@ -10,8 +10,7 @@ steps:
 - name: build
   image: golang
   commands:
-  - go build
-  - go test
+  - ./scripts/ci
 
 ---
 kind: pipeline
@@ -25,5 +24,4 @@ steps:
 - name: build
   image: golang
   commands:
-  - go build
-  - go test
+  - ./scripts/ci
