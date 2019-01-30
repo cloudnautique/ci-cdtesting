@@ -18,8 +18,8 @@ steps:
   - echo step 2
   when:
     ref:
-    - regs/head/master
-    - regs/tags/*
+    - refs/head/master
+    - refs/tags/*
 
 ---
 kind: pipeline
@@ -41,5 +41,5 @@ steps:
   - echo step 2
   when:
     ref:
-    - regs/head/master
-    - regs/tags/*
+    - refs/head/master
+    - refs/tags/*
