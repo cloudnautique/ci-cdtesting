@@ -10,7 +10,17 @@ steps:
 - name: build
   image: golang
   commands:
-  - ./scripts/ci
+  - echo step 1
+
+- name: condition
+  image: golang
+  commands:
+  - echo step 2
+  when:
+    branch:
+    - master
+    event:
+    - tag
 
 ---
 kind: pipeline
@@ -24,4 +34,16 @@ steps:
 - name: build
   image: golang
   commands:
-  - ./scripts/ci
+  - echo step 1
+
+- name: condition
+  image: golang
+  commands:
+  - echo step 2
+  when:
+    branch:
+    - master
+    event:
+    - tag
+
+
