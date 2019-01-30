@@ -17,10 +17,9 @@ steps:
   commands:
   - echo step 2
   when:
-    branch:
-    - master
-    event:
-    - tag
+    ref:
+    - regs/head/master
+    - regs/tags/*
 
 ---
 kind: pipeline
@@ -41,9 +40,6 @@ steps:
   commands:
   - echo step 2
   when:
-    branch:
-    - master
-    event:
-    - tag
-
-
+    ref:
+    - regs/head/master
+    - regs/tags/*
