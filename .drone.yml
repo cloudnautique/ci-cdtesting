@@ -17,6 +17,8 @@ steps:
   commands:
   - echo step 2
   when:
+    instance:
+    - drone-publish.rancher.io
     ref:
     - refs/head/master
     - refs/tags/*
@@ -40,6 +42,8 @@ steps:
   commands:
   - echo step 2
   when:
+    instance:
+    - drone-publish.rancher.io
     ref:
     - refs/head/master
     - refs/tags/*
