@@ -21,7 +21,7 @@ steps:
     - drone-publish.rancher.io
     ref:
     - refs/head/master
-    - refs/tags/*
+    - "refs/tags/*"
 
 - name: test_deploy
   image: golang
@@ -33,3 +33,4 @@ steps:
     - promote
     target:
     - promote-stable
+
