@@ -30,7 +30,7 @@ when:
 
 ---
 kind: pipeline
-name: arm64
+name: promotions
 
 platform:
   os: linux
