@@ -23,14 +23,30 @@ steps:
     - refs/head/master
     - "refs/tags/*"
 
+when:
+  event:
+    exclude:
+    - promote
+
+---
+kind: pipeline
+name: arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
 - name: test_deploy
   image: golang
   commands:
   - echo deploying....
   - echo yay
-  when:
-    event:
-    - promote
-    target:
-    - promote-stable
+
+
+when:
+  event:
+  - promote
+  target:
+  - promote-stable
 
