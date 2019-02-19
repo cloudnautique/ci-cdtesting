@@ -30,7 +30,7 @@ steps:
   - echo yay
   when:
     event:
-    - deployment
+    - promote
     target:
     - promote-stable
 
