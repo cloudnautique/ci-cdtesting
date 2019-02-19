@@ -23,7 +23,7 @@ steps:
     - refs/head/master
     - "refs/tags/*"
 
-when:
+trigger:
   event:
     exclude:
     - promote
@@ -44,7 +44,7 @@ steps:
   - echo yay
 
 
-when:
+trigger:
   event:
   - promote
   target:
