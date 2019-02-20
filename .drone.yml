@@ -40,7 +40,7 @@ steps:
 - name: test_deploy
   image: golang
   commands:
-  - echo deploying....
+  - echo deploying....${DRONE_TAG}
   - echo yay
 
 
