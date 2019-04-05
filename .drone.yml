@@ -10,7 +10,7 @@ steps:
 - name: build
   image: golang
   commands:
-  - echo step 1
+  - exit 1
 
 - name: condition
   image: golang
@@ -22,6 +22,19 @@ steps:
     ref:
     - refs/head/master
     - "refs/tags/*"
+
+
+- name: slack_notify
+  image: plugins/slack
+  settings:
+    webhook:
+      from_secret: slack_webhook
+    username: bill_maxwell
+  when:
+    status: [ failure ]
+    event:
+      exclude:
+      - pull_request
 
 trigger:
   event:
