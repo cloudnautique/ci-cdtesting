@@ -29,9 +29,15 @@ steps:
   settings:
     webhook:
       from_secret: slack_webhook
-    username: bill_maxwell
+    username: drone_publish
+    recipient: bill_maxwell
+    template: >
+      Build {{build.link}} failed to publish an image/artifact.
   when:
     status: [ failure ]
+    instance:
+      include:
+      - drone-publish.rancher.io
     event:
       exclude:
       - pull_request
